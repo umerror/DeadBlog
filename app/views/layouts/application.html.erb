@@ -17,7 +17,7 @@
 		<ul>
 			<li class="category">Website</li>
 			<li><%= link_to "Dead Blog", root_path %></li>
-			<li>About Dead</li>
+			<li><%= link_to "About Dead", about_path%></li>
 		</ul>
 
 		<ul>
@@ -32,7 +32,13 @@
 	</div>
 	<div id="main_content">
 		<div id="header">
-			<p>All Dead Posts!</p>
+			<% if current_page? (root_path)%>
+				<p>All Dead Posts!</p>
+			<% elsif current_page? (about_path)%>
+				<p>About</p>
+			<%else %>
+				<%= link_to "Back to all posts", root_path%>
+			<% end %>
 
 			<div class="buttons">
 				<button class="button"><%= link_to "New Dead Post", new_post_path %></button>
