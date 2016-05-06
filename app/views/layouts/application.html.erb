@@ -3,12 +3,50 @@
 <head>
   <title>MyBlog</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Raleway:400,700'%>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<div id="sidebar">
+		<div id="logo">
+			<%= link_to root_path do %>
+			<%= image_tag "dp.png"%>
+			<% end %>
+		</div>
+		<ul>
+			<li class="category">Website</li>
+			<li><%= link_to "Dead Blog", root_path %></li>
+			<li>About Dead</li>
+		</ul>
 
-<%= yield %>
+		<ul>
+			<li class="category">Social</li>
+			<li><a href="https://twitter.com">Dead Twitter</a></li>
+			<li><a href="https://instagram.com">Dead Instagram</a></li>
+			<li><a href="https://github.com">Dead Github</a></li>
+			<li><a href="mailto:mumernawaz@gmail.com">Dead Email</a></li>
+		</ul>
+
+		<p class="sign_in"> Dead Admin Login </p>
+	</div>
+	<div id="main_content">
+		<div id="header">
+			<p>All Dead Posts!</p>
+
+			<div class="buttons">
+				<button class="button"><%= link_to "New Dead Post", new_post_path %></button>
+				<button class="button">Log out</button>
+			</div>
+		</div>
+		<% flash.each do |name, msg| %>
+		<%= content_tag(:div, msg, class: "alert")%>
+		<% end %>
+		
+		<%= yield %>
+	</div>
+
+
 
 </body>
 </html>
